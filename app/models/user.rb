@@ -5,9 +5,10 @@ class User < ActiveRecord::Base
   validates :entered_password, :length => { :minimum => 6 }
   validates :email, :uniqueness => true, :format => /.+@.+\..+/ # imperfect, but okay
 
-  has_many :created_surveys, class_name: 'Survey', foreign_key :creator_id
+  has_many :created_surveys, class_name: 'Survey', foreign_key: :creator_id
   has_many :participations
-  has_many :voted_responses, class_name: "Response", foreign_key :voter_id
+  has_many :surveys, :through => :participations
+  has_many :voted_responses, class_name: "Response", foreign_key: :voter_id
 
   include BCrypt
 
@@ -26,6 +27,5 @@ class User < ActiveRecord::Base
     return user if user && (user.password == password)
     nil # either invalid email or wrong password
   end
-  
-end
+
 end
