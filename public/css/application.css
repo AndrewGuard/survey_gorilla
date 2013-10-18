@@ -1,9 +1,51 @@
 .container {
   margin: 20px auto;
-  width: 600px;
+  width: 1000px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
+  overflow: auto;
+
 }
-th {
-  text-align: left;
+
+.left_column {
+
+  float: left;
+  width: 500px;
+  padding: 50px 50px 50px 50px;
+  border: 1px solid black;
+
+
 }
+
+
+.right_column {
+
+  float: right;
+
+}
+
+.surveys_created {
+  border: 1px solid black;
+}
+
+.surveys_taken {
+  border: 1px solid black;
+}
+
+/*html {
+  background: url('http://www.everydaynodaysoff.com/wp-content/uploads/2011/01/Abe-Lincoln-Riding-Grizzly-Bear-Holding-Gun.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}*/
+
+
+.create_survey {
+  text-align: center;
+}
+
+.view_all_surveys {
+
+}
+
