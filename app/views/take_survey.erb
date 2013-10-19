@@ -1,0 +1,17 @@
+<h1> TAKE SURVEY HERE BIZNITCHES!!! </h1>
+
+<div class="container">
+
+<h2><%=@survey.title %></h2>
+
+  <% @survey.questions.each do |question| %>
+    <li><%= question.content %></li>
+    <ul>
+      <li class="list"><input type="radio" class="ballin" name="survey_shit" value="always">Always</li>
+      <li class="list"><input type="radio" class="ballin" name="survey_shit" value="sometimes">Sometimes</input></li>
+      <li class="list"><input type="radio" class="ballin" name="survey_shit" value="never">Never</input></li>
+    </ul>
+  <% end %>
+
+
+</div>
