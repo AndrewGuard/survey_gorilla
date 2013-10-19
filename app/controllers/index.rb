@@ -46,15 +46,17 @@ get '/take_survey/:id' do
   erb :take_survey
 end
 
-
 get '/survey_results/:id' do
   erb :survey_results
 end
 
-
 get '/view_all_surveys' do
    @all_surveys = Survey.all
   erb :view_all_surveys
+end
+
+get '/create_survey' do
+  erb :create_survey_page
 end
 
 
