@@ -17,6 +17,17 @@
 
 }
 
+#graph_body { 
+  font-family: 
+  Verdana, Arial, sans-serif; 
+  font-size: 12px; 
+}
+
+
+#placeholder { 
+  width: 450px; 
+  height: 200px; 
+}
 
 .right_column {
 

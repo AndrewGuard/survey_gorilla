@@ -1,17 +1,36 @@
-<h1> TAKE SURVEY HERE BIZNITCHES!!! </h1>
+<h1> Take Survey </h1>
 
 <div class="container">
 
 <h2><%=@survey.title %></h2>
-
+<form method="POST" action="/submit_response/<%= @survey.id %>">
   <% @survey.questions.each do |question| %>
-    <li><%= question.content %></li>
+    <p><%= question.content %></p>
     <ul>
-      <li class="list"><input type="radio" class="ballin" name="survey_shit" value="always">Always</li>
-      <li class="list"><input type="radio" class="ballin" name="survey_shit" value="sometimes">Sometimes</input></li>
-      <li class="list"><input type="radio" class="ballin" name="survey_shit" value="never">Never</input></li>
+      <li class="list"><input type="radio" class="ballin" name="survey_shit<%=question.id %>" value="always">Always</li>
+      <li class="list"><input type="radio" class="ballin" name="survey_shit<%=question.id %>" value="sometimes">Sometimes</input></li>
+      <li class="list"><input type="radio" class="ballin" name="survey_shit<%=question.id %>" value="never">Never</input></li>
+   
     </ul>
   <% end %>
 
+  <p> 
+    <input type="submit">
 
+    </form>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+var d1 = [[0, 3], [1, 3], [2, 5]];
+// var question_data = 
+ 
+$(document).ready(function () {
+    $.plot($("#placeholder"), [
+        {
+            data: d1,
+            bars: {
+                show: true
+            }
+        }
+    ]);
+});
