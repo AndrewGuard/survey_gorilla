@@ -39,7 +39,7 @@ delete '/sessions/:id' do
 end
 
 get '/create_survey' do
-  erb :create_survey_page
+  erb :create_survey
 end
 
 

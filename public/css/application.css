@@ -4,7 +4,6 @@
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
   overflow: auto;
-
 }
 
 .left_column {
@@ -13,13 +12,9 @@
   width: 500px;
   padding: 50px 50px 50px 50px;
   border: 1px solid black;
-
-
 }
 
-
 .right_column {
-
   float: right;
 
 }
