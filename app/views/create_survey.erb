@@ -1,0 +1,15 @@
+<head>
+  <link rel="stylesheet" href="/css/create_survey.css">
+  <script src="/js/create_survey.js"></script>
+</head>
+
+<div class="container">
+  <h3>Create your survey below!</h3>
+
+  <form id="question_rows" method="post" action="/add_questions_to_database">
+    <label for ="title">Title: </label><br>
+    <input type="text" name="survey_title" value="<%= @survery_title %>" placeholder=" Enter survey title" style="width: 500px;"></input><br><br>
+    <input type="submit" id="add_question" value="Add Question"><br><br><br>
+    <input type="submit" id="finish_survey" value="Finish Survey">
+  </form>
+</div>
