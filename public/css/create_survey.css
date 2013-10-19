@@ -1,0 +1,11 @@
+#edit_questions {
+  display: none;
+}
+
+.remove_question {
+  margin-left: 10px
+}
+
+.question_textbox {
+  width: 600px
+}

@@ -4,17 +4,12 @@
 </head>
 
 <div class="container">
-  <h3 id="create_survey"> Write your questions below! </h3>
+  <h3>Create your survey below!</h3>
 
-  <p id="edit_questions">
-    <form>
-    <label for="question">Question </label>
-    <input type="text" name="question" id="question">
-    <span class="remove_question" id="remove_question"><input type='submit' value="Remove Question"></span><br><br>
-    <span class="add_question"><input type="submit" id="add_question" value="Add Question"></span><br><br><br>
-    <form>
+  <form id="question_rows" method="post" action="/add_questions_to_database">
+    <label for ="title">Title: </label><br>
+    <input type="text" name="survey_title" value="<%= @survery_title %>" placeholder=" Enter survey title" style="width: 500px;"></input><br><br>
+    <input type="submit" id="add_question" value="Add Question"><br><br><br>
     <input type="submit" id="finish_survey" value="Finish Survey">
-
-  </p>
-
+  </form>
 </div>
