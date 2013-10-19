@@ -20,24 +20,42 @@ post '/sessions' do
     erb :index
   end
 end
-
+  
 post '/user' do
-  @user = User.new params[:user]
-  if @user.save
+
+  @user = User.create params[:user]
+  # binding.pry
+  if @user.valid?
     session[:user_id] = @user.id
     redirect to '/user'
   else
-    erb :index
+    redirect to '/'
   end
 end
 
-delete '/sessions/:id' do
+get '/sessions/:id' do
   # sign-out -- invoked via AJAX
-  return 401 unless params[:id].to_i == session[:user_id].to_i
+  # return 401 unless params[:id].to_i == session[:user_id].to_i
   session.clear
-  200
+  redirect to ('/')
+  # 200
 end
 
+get '/take_survey/:id' do
+  @survey = Survey.find(params[:id])
+  erb :take_survey
+end
+
+
+get '/survey_results/:id' do
+  erb :survey_results
+end
+
+
+get '/view_all_surveys' do
+   @all_surveys = Survey.all
+  erb :view_all_surveys
+end
 
 
 
