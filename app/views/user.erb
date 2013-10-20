@@ -3,7 +3,7 @@
 
   <div class="left_column">
     <div class="surveys_created">
-      
+
       <h2>Surveys Created</h2>
      <% current_user.created_surveys.each do |survey| %>
       <ul>
@@ -25,9 +25,10 @@
 
 
   <div class="right_column">
-    <div class="create_survey">
-      <input type="submit" id="create_survey" value="Create a Survey">
+    <div id="go_to_create_survey_page">
+      <a href="/create_survey" class="button">Create a Survey<a/>
     </div>
+
     <div class="view_all_surveys">
       <a href="/view_all_surveys" class="button">View All Surveys<a/>
     </div>

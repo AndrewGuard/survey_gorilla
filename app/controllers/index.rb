@@ -20,7 +20,7 @@ post '/sessions' do
     erb :index
   end
 end
-  
+
 post '/user' do
 
   @user = User.create params[:user]
@@ -59,8 +59,25 @@ get '/create_survey' do
   erb :create_survey
 end
 
+post '/add_questions_to_database' do
+  @user = User.find(session[:user_id])
+  @survey_title = params[:survey_title]
+  @survey_questions = []
 
+  params.delete_if {|key, value| key == "survey_title"}
 
+  params.each_value do |value|
+    @survey_questions.push(value)
+  end
+
+  @survey = Survey.create(title: @survey_title, creator_id: @user.id)
+
+  @survey_questions.each do |question|
+    Question.create(content: question, survey_id: @survey.id)
+  end
+
+  redirect "/user"
+end
 
 
 
