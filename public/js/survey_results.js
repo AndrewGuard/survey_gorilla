@@ -1,6 +1,9 @@
 var d1 = [[0, 3], [1, 3], [2, 5]];
-// var question_data = 
- 
+
+// data = somemagichere
+
+data = JSON.parse(data);
+
 $(document).ready(function () {
     $.plot($("#placeholder"), [
         {

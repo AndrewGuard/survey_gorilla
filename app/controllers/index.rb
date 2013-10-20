@@ -68,7 +68,37 @@ post '/submit_response/:survey_id' do
 end
 
 get '/survey_results/:id' do
-  params.inspect
-  @survey_results = Survey.find(1).questions.find(params[:question_id]).responses
-  redirect to '/survey_results/:id'
+
+   survey_id = params[:id] #.to_i
+   voter_response = {}
+   @survey_results = Survey.find(survey_id).questions.each do |question|
+    voter_response[question.content] = []
+     question.responses.each do |response|
+      voter_response[question.content] << response.voter_response
+    end
+  end
+
+    content_type :json
+    
+    return voter_response.to_json
+  #@survey_results = Survey.find(1).questions #.find(1).context
+  redirect to '/survey_results'
+end
+
+# get '/survey_results/:id' do
+
+#    survey_id = params[:id] #.to_i
+#    @survey_results = Survey.find(survey_id).questions.each do |question|
+#      question.responses.each do |response|
+#       response.voter_response
+#     end
+#   end
+
+#   #@survey_results = Survey.find(1).questions #.find(1).context
+#   redirect to '/survey_results'
+# end
+
+
+get '/survey_results' do
+  erb :survey_results
 end
