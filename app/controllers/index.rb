@@ -79,9 +79,11 @@ get '/survey_results/:id' do
     end
   end
 
-  content_type :json
 
-  return voter_response.to_json
+    content_type :json
+    
+     return voter_response.to_json
+  #@survey_results = Survey.find(1).questions #.find(1).context
 
   redirect to '/survey_results'
 end
