@@ -86,7 +86,6 @@ get '/survey_results/:id' do
   redirect to '/survey_results'
 end
 
-
 post '/add_questions_to_database' do
   @user = User.find(session[:user_id])
   @survey_title = params[:survey_title]
@@ -98,7 +97,17 @@ post '/add_questions_to_database' do
     @survey_questions.push(value)
   end
 
+post '/add_questions_to_database' do
+  @user = User.find(session[:user_id])
+  @survey_title = params[:survey_title]
   @survey = Survey.create(title: @survey_title, creator_id: @user.id)
+
+  @survey_questions = []
+  params.delete_if {|key, value| key == "survey_title"}
+
+  params.each_value do |value|
+    @survey_questions.push(value)
+  end
 
   @survey_questions.each do |question|
     Question.create(content: question, survey_id: @survey.id)
@@ -106,6 +115,7 @@ post '/add_questions_to_database' do
 
   redirect "/user"
 end
+
 
 get '/survey_results' do
   erb :survey_results
