@@ -3,7 +3,6 @@ class CreateSurveys < ActiveRecord::Migration
     create_table :surveys do |t|
       t.string :title
       t.integer :creator_id
-      t.string :voter_response
 
       t.timestamps
     end

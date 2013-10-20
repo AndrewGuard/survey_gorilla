@@ -20,7 +20,7 @@ post '/sessions' do
     erb :index
   end
 end
-  
+
 post '/user' do
 
   @user = User.create params[:user]
@@ -67,9 +67,10 @@ post '/submit_response/:survey_id' do
   redirect to '/user'
 end
 
+
 get '/survey_results/:id' do
 
-   survey_id = params[:id] #.to_i
+   survey_id = params[:id]
    voter_response = {}
    @survey_results = Survey.find(survey_id).questions.each do |question|
     voter_response[question.content] = []
@@ -78,25 +79,32 @@ get '/survey_results/:id' do
     end
   end
 
-    content_type :json
-    
-    return voter_response.to_json
-  #@survey_results = Survey.find(1).questions #.find(1).context
+  content_type :json
+
+  return voter_response.to_json
+
   redirect to '/survey_results'
 end
 
-# get '/survey_results/:id' do
 
-#    survey_id = params[:id] #.to_i
-#    @survey_results = Survey.find(survey_id).questions.each do |question|
-#      question.responses.each do |response|
-#       response.voter_response
-#     end
-#   end
+post '/add_questions_to_database' do
+  @user = User.find(session[:user_id])
+  @survey_title = params[:survey_title]
+  @survey = Survey.create(title: @survey_title, creator_id: @user.id)
 
-#   #@survey_results = Survey.find(1).questions #.find(1).context
-#   redirect to '/survey_results'
-# end
+  @survey_questions = []
+  params.delete_if {|key, value| key == "survey_title"}
+
+  params.each_value do |value|
+    @survey_questions.push(value)
+  end
+
+  @survey_questions.each do |question|
+    Question.create(content: question, survey_id: @survey.id)
+  end
+
+  redirect "/user"
+end
 
 
 get '/survey_results' do
