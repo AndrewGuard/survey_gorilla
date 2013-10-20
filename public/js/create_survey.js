@@ -12,6 +12,13 @@ $(document).ready(function () {
 
     //add first node to the DOM
     $('#add_question').before($node);
+
+        //remove a textfield
+    $('.remove_question').on('click', function(event){
+      event.preventDefault();
+      $(this).parent().remove();
+      $('#add_question').before($node);
+    })
   }
 
   //add a new node
@@ -27,6 +34,7 @@ $(document).ready(function () {
     //remove a textfield
     $('.remove_question').on('click', function(event){
       event.preventDefault();
+      varCount--
       $(this).parent().remove();
     })
   })
