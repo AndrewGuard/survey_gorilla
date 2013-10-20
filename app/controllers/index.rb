@@ -86,16 +86,6 @@ get '/survey_results/:id' do
   redirect to '/survey_results'
 end
 
-post '/add_questions_to_database' do
-  @user = User.find(session[:user_id])
-  @survey_title = params[:survey_title]
-  @survey_questions = []
-
-  params.delete_if {|key, value| key == "survey_title"}
-
-  params.each_value do |value|
-    @survey_questions.push(value)
-  end
 
 post '/add_questions_to_database' do
   @user = User.find(session[:user_id])
