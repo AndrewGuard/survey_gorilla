@@ -4,8 +4,12 @@
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
   overflow: auto;
+  color: green;
 }
 
+.container a {
+  color: red;
+}
 .left_column {
 
   float: left;
@@ -40,14 +44,14 @@
 .surveys_taken {
   border: 1px solid black;
 }
-/*
+
 html {
   background: url('http://www.everydaynodaysoff.com/wp-content/uploads/2011/01/Abe-Lincoln-Riding-Grizzly-Bear-Holding-Gun.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}*/
+}
 
 
 .create_survey {

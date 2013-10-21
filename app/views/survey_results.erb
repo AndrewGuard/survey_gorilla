@@ -1,4 +1,4 @@
-<head>
+<!-- <head>
   <title>Flot Bar Chart</title>
   <script type="text/javascript" language="javascript" src="/js/survey_results.js"></script>
   <script type="text/javascript" language="javascript" src="/js/jquery.flot.js"></script>
@@ -9,3 +9,42 @@
     <div id="placeholder" style="width:600px;height:300px"></div>
 </body>
 </html>
+ -->
+
+<div class="container">
+  <h2> Results for <%= @survey.title %> </h2>
+  <table>
+    <tr>
+      <th>Question</th>
+      <th>Always</th>
+      <th> Sometimes</th>
+      <th>Never</th>
+  </tr>  
+  <% @responses_per_question.each do |key, value| %>
+    <tr>
+      <td><%= key %></td>
+      <td><%= value.count("always") %></td>
+      <td><%= value.count("sometimes") %></td>
+      <td><%= value.count("never") %></td>
+    </tr>
+  <% end %>
+   
+<!-- hash = {"How often do feel sleepy?"=>["always", "sometimes", "never"], "Do you trust the process?"=>["never", "always", "always"], "Do you enjoy lectures?"=>["sometimes", "sometimes", "never"], "Do you stay past 8 o'clock?"=>["sometimes", "sometimes", "sometimes"], "Do you come in on weekends?"=>["always", "never", "never"]}
+
+ hash.each do |key, value|   
+     puts key
+   puts "Number of always is #{value.count("always")}"
+   puts "Number of sometimes is #{value.count('sometimes')}"
+   puts "Number of never is #{value.count('never')}"
+   end
+ -->
+  </table>
+
+</div>
+
+
+
+
+
+
+
