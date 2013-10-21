@@ -56,7 +56,7 @@ get '/view_all_surveys' do
 end
 
 get '/create_survey' do
-  erb :create_survey_page
+  erb :create_survey
 end
 
 post '/submit_response/:survey_id' do
@@ -70,20 +70,30 @@ end
 
 get '/survey_results/:id' do
 
-   survey_id = params[:id]
-   voter_response = {}
-   @survey_results = Survey.find(survey_id).questions.each do |question|
-    voter_response[question.content] = []
-     question.responses.each do |response|
-      voter_response[question.content] << response.voter_response
+
+  # survey_id = params[:id] 
+  #  @survey = Survey.find(survey_id)
+  #  @survey_results = Survey.find(survey_id).questions.each do |question|
+  #    question.responses.each do |response|
+  #     response.voter_response
+  #   end
+  # end
+
+  survey_id = params[:id]
+  @survey = Survey.find(survey_id)
+  @responses_per_question = {}
+
+  @survey_results = Survey.find(survey_id).questions.each do |question|
+    @responses_per_question[question.content] = []
+    question.responses.each do |response|
+      @responses_per_question[question.content] << response.voter_response
     end
   end
 
-  content_type :json
+  # content_type :json
+  # return voter_response.to_json
 
-  return voter_response.to_json
-
-  redirect to '/survey_results'
+  erb :survey_results
 end
 
 
